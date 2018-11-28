@@ -1,0 +1,352 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}"
+      xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type"
+            content="text/html; charset=windows-1252"/>
+      <!--title>index</title-->
+   </head>
+   <body>
+   
+      <section layout:fragment="searchBar" 
+               data-comments="hides the search bar"></section>
+   
+      <section layout:fragment="content">
+         
+         <style>
+            .sortable td:first-child {
+               vertical-align: top; 
+               width: 80px;               
+            }
+            
+            .sortable {
+               font-size: 0.8rem;
+            }
+            
+            .table thead th {
+               border-bottom: 0px;
+               cursor: pointer;
+               font-size: 0.9rem;
+               padding: .6rem .5rem;
+            }
+            
+            .table td, .table th {
+               border-top: 0px;
+               padding: .5rem;
+            }
+            
+            tbody.row-selectable tr {
+               cursor: pointer;
+            }
+            
+            tbody.row-selectable tr.selected {
+               background-color: #ffcd29;
+            }
+            
+                       
+            th:after {
+               content: '\f0dc'; /*sort*/
+               padding-left: .4rem;
+               font-family: "Font Awesome 5 Free";     
+               opacity: .3;
+            }
+            
+            th.sorted:after {
+               content: '\f0d8'; /*caret-up*/
+               opacity: 1;
+            }
+            
+            th.sorted.reversed:after {
+               content: '\f0d7'; /*caret-down*/
+            }
+            
+            div#autoComplete a {
+               display: block;
+            }
+         </style>
+         
+         <div class="container form-search">
+            <div class="row">
+               <div class="col-md-6">
+                  <label th:text="#{search}" />
+                  <input type="text" id="searchTerm" ></input>
+               </div>
+               <div class="col-md-6">
+                  <label th:text="#{prd.lst.category}" />
+                  <select>
+                     <option value="0" th:text="#{all.drug.categories}" />
+                     <option th:each="p:${application._dbl_listing_categories_}"
+                             th:value="${p.priceListId}"
+                             th:text="${p.productListingCategory}"
+                             />
+                  </select>
+               </div>  
+            </div>
+            
+            <div id="autoComplete" >               
+            </div>
+            
+            <div class="row pt-3">
+               <div class="col" >
+               <span id="title-adv-search"
+                     class="border-bottom-orange">
+                  <label th:text="#{adv.search}" 
+                         class="accordion-toggle collapsed"
+                         data-toggle="collapse" href="#adv-search-form" />
+               </span></div>
+            </div>
+            
+            <div class="row collapse" id="adv-search-form">
+               
+               <div class="col-md-6">
+                  <label th:text="#{ptc.title}" /><br />
+                  <!--[[#{sort.by}]] <br />
+                  <span class="mr-3">
+                     <input type="radio" name="sortBy" />
+                     <span th:text="#{code}"></span>
+                  </span>
+                  <span>
+                     <input type="radio" name="sortBy" />
+                     <span th:text="#{description}"></span>
+                  </span>
+                  <br />
+                  <select >
+                     <option value="0" th:text="#{all.ptcs}" />
+                     <option th:each="ptc:${application._dbl_ptcs_.values()}"
+                             th:value="${ptc.id}"
+                             th:utext="${ptc}"
+                             />
+                  </select> -->
+                  <!--input type="text" id="ptcSelected" readonly
+                         onclick="$('#ptcTable_wrapper').removeClass('collapse')" ></input-->
+                  
+                  <input id="selectedPTC" readonly type="text" 
+                         style="cursor: default;"
+                         th:placeholder="#{select.ptc}" class="mb-1" />
+                  <table class="table " style="margin-bottom: 0px;">
+                     <thead class="thead-light">
+                        <tr>
+                           <th style="width: 80px;" 
+                               onclick="sortCol(this, 0)" 
+                               th:text="#{code}" ></th>
+                           <th onclick="sortCol(this, 1)" 
+                               th:text="#{description}" ></th>
+                        </tr>
+                     </thead>
+                  </table>
+                  <div style="display: block; height: 120px; overflow-y: scroll;">
+                  <table id="ptcTable" class="sortable table table-striped" >
+                     <thead class="hide">
+                        <tr>
+                           <th>code</th>
+                           <th>description</th>
+                        </tr>
+                     </thead>                     
+                     <tbody class="row-selectable ">                        
+                        <tr th:each="ptc:${application._dbl_ptcs_.values()}">
+                           <td th:text="${ptc.id}" ></td>
+                           <td th:text="${ptc.description}" ></td>
+                        </tr>                        
+                     </tbody>                     
+                  </table>
+                  </div>
+                  <!--label th:text="|#{selected}:|" />
+                  <span id="selectedPTC" /-->
+                  
+                  
+               </div>               
+               <div class="col-md-6">
+                  <span class="d-none d-md-block">
+                  </span>
+                  <label th:text="#{manufacturer}" />
+                  <select style="">
+                     <option value="0" th:text="#{all.manufacturers}" />
+                     <option th:each="m:${application._dbl_manufacturers_.values()}"
+                             th:value="${m.code}"
+                             th:text="${m.name}"
+                             />
+                  </select>                  
+               </div>               
+            </div>
+            
+            <div class="row pt-4 ">
+               <div class="col text-right">
+                  <button class="btn idbl btn-secondary mr-2" th:text="#{reset.form}"></button>
+                  <button class="btn idbl" th:text="#{search}"></button>
+               </div>
+            </div>
+            
+            <div class="row mt-3" style="height:20px; margin: 0 -30px; background-color: #f1f2f2;">
+               <div class="col"></div>
+            </div>
+            
+            <div class="row">
+               <div class="col block-title" th:text="#{dbl.ref.info}"></div>
+            </div>
+            
+            <div class="row mb-5">
+               <div class="col-md-6">
+                  <label th:text="#{policies.guidelines}" />
+                  <select style="">
+                     <option th:each="d:${application.IDBL_REF_INFO_PDF_CFG.policyGuidelineForms}"
+                             th:value="${d.fileName}"
+                             th:text="${d.description}"
+                             />
+                  </select>  
+               </div>
+               <div class="col-md-6">
+                  <label th:text="#{comment.forms}" />
+                  <select style="">
+                     <option th:each="d:${application.IDBL_REF_INFO_PDF_CFG.physicianCommentsForms}"
+                             th:value="${d.fileName}"
+                             th:text="${d.description}"
+                             />
+                  </select> 
+               </div>
+            </div>
+
+            <div class="row mb-5">
+               <div class="col-md-6">
+                  <label th:text="#{rec.updates}" />
+                  <select style="">
+                     <option th:each="d:${application.IDBL_REF_INFO_PDF_CFG.recentUpdatesForms}"
+                             th:value="${d.fileName}"
+                             th:text="${d.description}"
+                             />
+                  </select> 
+               </div>
+               <div class="col-md-6">
+                  <label th:text="#{dbl.reports}" />
+                  <select style="">
+                     <option th:each="d:${application.IDBL_REF_INFO_PDF_CFG.dblReports}"
+                             th:value="${d.fileName}"
+                             th:text="${d.description}"
+                             />
+                  </select> 
+               </div>
+            </div>
+            
+            <div class="row mb-5" style="width: 20%; margin: auto; background-color: #ffcd29;">
+               <div class="col "></div>
+            </div>
+            
+            <div class="row mb-4">
+               <div class="col block-title" th:text="#{dbl.forms}"></div>
+            </div>
+            
+            <div class="row mb-5">
+               <div class="col">
+                  <label th:text="#{spec.auth.forms}" />
+                  <select style="">
+                     <option th:each="d:${application.IDBL_REF_INFO_PDF_CFG.specialAuthorizationForms}"
+                             th:value="${d.fileName}"
+                             th:text="${d.description}"
+                             />
+                  </select> 
+               </div>
+            </div>
+
+            <div class="row mb-2">
+               <div class="col-md-6">
+                  <label th:text="#{ms.pres.reg.form}" />
+                  <select style="">
+                     <option th:each="d:${application.IDBL_REF_INFO_PDF_CFG.prescriberRegistrationForms}"
+                             th:value="${d.fileName}"
+                             th:text="${d.description}"
+                             />
+                  </select>
+               </div>
+               <div class="col-md-6">
+                  <label th:text="#{forms.physicians}" />
+                  <select style="">
+                     <option th:each="d:${application.IDBL_REF_INFO_PDF_CFG.physicianForms}"
+                             th:value="${d.fileName}"
+                             th:text="${d.description}"
+                             />
+                  </select>
+               </div>
+            </div>
+            
+         </div>   
+         
+         <script>
+         
+         var searchTerm;
+         
+         $(function() {
+            $('tbody.row-selectable tr').click(function() {
+                 var ths = $(this), tds;
+                 if (ths.hasClass('selected') ) {
+                     ths.removeClass('selected');
+                     $('#selectedPTC').val('');
+                 }
+                 else {
+                     ths.addClass('selected')
+                        .siblings('.selected').removeClass('selected');
+                     tds = ths.children(); 
+                     $('#selectedPTC').val(tds.first().text() + ' - ' + tds.last().text());
+                 } 
+            });
+            
+            var searchTerm;            
+            $('#searchTerm').keydown(function(e) {
+               searchTerm = $('#searchTerm').val();
+            }).keyup(function(e) {
+               var newT = $('#searchTerm').val(), d;
+               if (searchTerm == newT) {
+                  return;
+               }
+               else if (newT.length < 3) {  
+                  $('#autoComplete').html('');
+                  return;
+               }
+               else {
+                  searchTerm = newT;
+                  $.get('[[@{/autoComplete}]]', {term:searchTerm}, function(data) {
+                     $('#autoComplete').html(data.fragments.autoComplete);
+                  });
+               }
+            });
+         });
+         
+         function sortCol(th, colIndex) {
+            var ths = $(th);
+            $('table.sortable thead tr th')[colIndex].click();
+            if (ths.hasClass('reversed')) {
+               ths.removeClass('reversed');
+            }
+            else if (ths.hasClass('sorted')) {
+               ths.addClass('reversed');
+            }
+            else {
+               ths.addClass('sorted');
+            }
+            
+            ths.siblings().removeClass('sorted').removeClass('reversed');
+         }
+         
+         </script>         
+      </section>
+      
+      <div class="row" th:fragment="autoCompleteResults">
+         <div class="col-md" th:unless="${#lists.isEmpty(genericNames)}" >
+            <label >Generic Names</label>
+            <a href="#" th:each="n:${genericNames}" th:text="${n}" />
+         </div>      
+         <div class="col-md" th:unless="${#lists.isEmpty(brandNames)}" >
+            <label >Brand Names</label>
+            <a href="#" th:each="n:${brandNames}" th:text="${n}" />
+         </div> 
+         <div class="col-md" th:unless="${#lists.isEmpty(dinPins)}">
+            <label >DIN/PINs</label>
+            <a href="#" th:each="n:${dinPins}" th:text="${n}" />
+         </div>      
+         <div class="col-md" th:unless="${#maps.isEmpty(manufacturers)}">
+            <label >Manufacturers</label>
+            <a href="#" th:each="n:${manufacturers.values()}" th:text="${n}" />
+         </div> 
+      </section>
+      
+   </body>
+</html>

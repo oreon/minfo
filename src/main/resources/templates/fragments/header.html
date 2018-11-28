@@ -1,0 +1,53 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=windows-1252"/>
+      <title>header</title>
+   </head>
+   <body>
+      <div class="container" th:fragment="header">
+         <div class="row text-right pt-2">
+            <div class="col top-links">
+               <a href="#" th:text="#{home.gov.ab}" ></a>
+               <a href="#" th:text="#{ministries}" ></a>
+               <a href="#" th:text="#{contact.gov}" ></a>
+            </div>
+         </div>
+         <div class="row mt-4">
+            <div class="col d-flex justify-content-between">
+               <img class="ab-health-logo" th:src="@{/resources/images/AB-Health-logo.png}" ></img>
+               <span>
+                  <input type="text" name="as_q" ></input>
+                  <button class="searchButton" 
+                          value="search" type="button" 
+                          title="Search"
+                          name="as_btn" ></button>
+               </span>
+            </div>
+         </div>
+         
+         <div class="row mt-2">
+            <div class="col">
+            [[#{link.alberta.ca}]] > [[#{link.health}]] > [[#{link.health.care.insurance}]]
+            </div>
+         </div>
+         
+         <div class="row bg-white pt-1 pb-1 border-bottom-orange" id="metaNav">
+            <div class="col">
+               [[#{link.health.care.insurance}]]
+            </div>
+         </div>
+         
+         <div class="row bg-white pt-1 pb-2" >
+            <div class="col">
+               <div class="container content">
+                  <div class="row">
+                     <div class="col block-title" th:text="#{app.full.name}"></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+      </div>
+   </body>
+</html>

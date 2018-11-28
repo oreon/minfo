@@ -1,0 +1,182 @@
+/*
+ * $Id: idbl-styles.css,v 1.1.2.5 2018/11/16 18:04:28 myang Exp $
+ */
+header {
+   background-image: url(../images/page-bg-top.png);
+   background-repeat: no-repeat;
+   background-position: top;
+   /*height: 120px;*/
+}
+
+.footer {
+   background-image: url(../images/page-bottom.png);
+   background-position: center;
+   background-repeat: no-repeat;
+   min-height: 10em;
+}
+
+.footer > div.container {
+   padding-top: 5em;
+}
+
+.navbar.dbl {
+   /*padding-top: 3em;*/
+}
+
+.navbar.dbl a {
+   font-size: 0.7em;
+   color: #000000;
+   text-decoration: none;
+   margin: 0 0.5em;
+}
+
+.border-bottom-orange {
+   border-bottom: 2px solid #ffcd29;
+}
+
+.btn.idbl {
+   background-color: #ffcd29;
+   color: #212529;
+   border-width: 0px;
+   border-radius: 0;
+   padding: 0.2rem 3rem;
+}
+
+.btn.idbl.btn-secondary {
+   background-color: #f1f2f2;
+}
+
+.navbar>.container {
+   display: block;
+}
+@media (min-width:1200px) {
+   .container {
+      max-width: 912px;
+   }
+}
+
+input[name='as_q'] {
+   width: 208px;
+   font: 11px/1.2 Arial, Helvetica, sans-serif;
+   color: #000000;
+   padding: 3px;
+   height: 22px;
+   border: 1px solid #36424b;
+   border-right: 0px;
+   vertical-align: top;
+}
+
+button[name='as_btn'] {
+   background: black url(../images/sprite.png)no-repeat;
+   height: 22px;
+   border: 1px solid #000000;
+   width: 22px;
+   float: right;
+}
+
+div.mainNav {
+   font-size: 0.9em;
+   color: #36424b;
+}
+
+.block-title {
+   font-weight: bold;
+   font-size: 18px;
+   color: #36424b;
+   padding-top: 1.2rem;
+}
+
+.content, .content div.container {
+   /*width: 85%;*/
+}
+
+#title-adv-search {
+   display: block;
+   width: 100%;
+}
+
+.form-search input[type=text], select {
+   height: 1.5rem;
+   width: 100%;
+   background-color: #f1f2f2;
+   border: 0px;  
+}
+
+/*
+c {
+   padding: 0px 10px 0px 0px;
+   font-weight: bold;
+   font-size: 18px;
+   color: #36424b;
+   margin-top: 2em;
+}
+*/
+
+body.dbl {
+   font-family: arial, helvetica, sans-serif;
+   color: #36424b;              
+}
+
+label {
+   font-weight: bold;
+   margin-top: .5rem;
+   /*margin-bottom: 0em;
+   margin-top: 1em;*/
+}
+
+.accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: "Font Awesome 5 Free"; /*'Glyphicons Halflings';*/  /* essential for enabling glyphicon */
+    content: "\f107"; /*"\e114";*/    /* adjust as needed, taken from bootstrap.css */
+    /*float: right;*/        /* adjust as needed */
+    color: grey;         /* adjust as needed */   
+    font-size: 1.2rem;
+    padding-left: 0.5rem;
+}
+
+.accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: '\f105'; /*"\e080";*/    /* adjust as needed, taken from bootstrap.css */
+}
+
+.btn-warning.dbl {
+   font-size: 1em;
+}
+
+table.dbl {
+   vertical-align: middle !important;
+}
+
+table.dbl thead {
+   border-bottom: 4px solid #ffcd29;
+   background-color: #f1f2f2;
+   font-weight: bold;
+}
+
+table.dbl thead tr {
+   height: 4em;
+}
+
+table.dbl label {
+   margin-top: 0em;
+}
+
+table.dbl tr {
+   height: 2em;
+}
+
+
+
+table.dbl tr td:first-child {
+   padding-left:15px;
+}
+
+.card.abc {
+   border-width: 0px;
+}
+
+.card.abc .card-header {
+   background-color: transparent;
+   padding-left: 0px;   
+   border-bottom: 2px solid #ffcd29;
+}

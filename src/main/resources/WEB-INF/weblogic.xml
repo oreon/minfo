@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'windows-1252'?>
+<weblogic-web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://xmlns.oracle.com/weblogic/weblogic-web-app 
+                  http://xmlns.oracle.com/weblogic/weblogic-web-app/1.7/weblogic-web-app.xsd"
+                  xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+  <!--charset-params>
+    <input-charset>
+      <resource-path></resource-path>
+      <java-charset-name></java-charset-name>
+    </input-charset>
+  </charset-params -->
+  <container-descriptor>
+    <prefer-web-inf-classes>false</prefer-web-inf-classes>
+    <prefer-application-packages>
+        <package-name>org.springframework.*</package-name>
+    </prefer-application-packages>
+  </container-descriptor>
+</weblogic-web-app>

@@ -1,0 +1,670 @@
+/*
+ * $Id: abc-common-styles.css,v 1.1.2.1 2018/11/14 19:51:15 myang Exp $
+ */
+html, body {
+   min-height: 100%;
+}
+
+body {
+   overflow-y: scroll;
+   display: flex;
+   flex-direction: column;
+   background-color: #f1f2f2;
+}
+
+.footer {
+   flex-shrink: 0;
+}
+
+.header {
+}
+
+.content {
+   flex: 1 0 auto;
+   margin-bottom: 2em;
+}
+
+div {
+   border: 0px solid black;
+}
+
+.abc-btn {
+   width: 140px;
+}
+
+/*.abc-btn-next deprecated*/
+.abc-btn-next::before {
+   content: "Next";
+}
+
+.abc-btn-next::after {
+   content: "";
+   display: inline-block;
+   width: 12px;
+   height: 12px;
+   background-color: transparent;
+   background-repeat: no-repeat;
+   background-image: url(../..//images/common/topNavArrow.png);
+   background-size: 12px;
+   background-position-x: center;
+   background-position-y: center;
+   margin-left: 0.3em;
+   transform: rotate(180deg);
+}
+
+.abc-btn-back::after {
+   content: "Back";
+}
+
+.abc-btn-back::before {
+   content: "";
+   display: inline-block;
+   width: 12px;
+   height: 12px;
+   background-color: transparent;
+   background-repeat: no-repeat;
+   background-image: url(../..//images/common/topNavArrow.png);
+   background-size: 12px;
+   background-position-x: center;
+   background-position-y: center;
+   margin-right: 0.3em;
+}
+
+
+.nav-item.abc.active {
+   background-color: white;
+   margin-top: -12px;
+}
+
+.nav-item.abc.active span {
+   color: #0094d7;
+}
+
+.nav-item.abc.completed span {
+   color: #5181aa;
+}
+
+.nav-tabs.abc {
+   border-bottom: 0px;
+}
+
+.nav-link.abc {
+   border-width: 0px;
+   border-radius: 0;
+}
+
+.navbar.abc {
+   min-height: 3.625rem;
+   padding: 1rem 0;
+}
+
+.header-abc {
+   padding-top: 1rem;
+}
+
+h1.abc {
+   padding-top: 5rem;
+   font-size: 3rem;
+}
+
+/* ------------------------------- CARD Related CSS ------------------------------------ */
+
+
+.abc-transparent-card {
+  border: transparent;
+}
+
+.abc-transparent-card-header{
+    border: none;
+    background: none;
+    padding-bottom: 0;
+}
+
+.abc-action-card-header {
+  background-color: white;
+  border: none;
+  color: #484848;
+}
+
+.abc-action-card-button {
+  text-align: center;
+  padding: 1rem;
+}
+
+.abc-action-card-button .btn {
+  background-color: #0099CB;
+  color: white;
+}
+
+
+/* ----------------------------------- CARD Related CSS END ------------------------------ */
+
+/* --------------------------------- Question List Related CSS ------------------------------ */
+
+
+.abc-question-list-border {
+  border-top: rgb(236, 236, 236) solid 0.5px;
+  border-bottom: rgb(236, 236, 236)solid 0.5px;
+  border-left: none;
+  border-right: none;
+}
+
+.abc-ineligible-over-60-error {
+  display: none;
+  text-align: justify;
+  background-color: #a2bbeb;
+  padding: 9px;
+  color: #373a3a;
+}
+
+.abc-btn-question-list {
+  color: gray;
+  border-color: lightgray;
+}
+
+.abc-btn-question-list.active {
+  color: white;
+  border-color: #b6da48;
+  background-color: #b6da48;
+}
+
+/* TODO: Not sure if this is needed - Refer Client */
+.abc-btn-question-list.focus {
+  box-shadow: inset 0 0 0, 0 0 0;
+}
+
+@media (max-width: 767.98px) {
+  .abc-sm-margin-top {
+    margin-top: 0.8rem;
+  }
+
+  .abc-sm-width-full {
+    width: 90%;
+  }
+}
+
+/* -------------------------------- Question List Related CSS END ---------------------------- */
+
+.abc-blue-theme-border {
+  border-color: #1895d4 !important;
+}
+
+.abc-blue-theme-color {
+  color: #1895d4;
+}
+
+.abc-light-text {
+  color: lightgray;
+}
+
+
+/**
+Custom Checkbox
+**/
+/* The container */
+.abc-checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.abc-checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    font-size:400px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.abc-checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.abc-checkbox-container input:checked ~ .checkmark {
+    background-color: #b5dc39;
+    border-color: #b5dc39;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.abc-checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.abc-checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+
+}
+
+.abc-page-title {
+   font-size: 1.625rem;
+   font-weight: bold;
+   color: #485263;   
+   padding-top: 1em;
+}
+
+.card.abc {
+   border-width: 0px;
+   color: #485263;
+   font-weight: bold;
+}
+
+.card-header.abc {
+   background-color: transparent;
+   font-size: 1.125rem;
+   font-weight: bold;
+   cursor: pointer;
+   padding-left: 0;
+   margin-top: 1em;
+   border-bottom: 1px solid #0094d7;
+}
+
+.card-header.abc.disabled {
+   border-bottom: 1px solid #dee2e6;
+}
+
+.card-header.abc a.card-link {
+   color: #0094d7;
+}
+
+.card-header.abc a.card-link:after {
+   color: #0094d7;
+   content: '\f0d8';
+   font-family: "Font Awesome 5 Free";
+   margin-left:10px;
+}
+
+.card-header.abc a.card-link.collapsed:after {
+   content: '\f0d7';
+}
+
+.card-header.abc.disabled a.card-link {
+   color: #dee2e6;
+}
+
+.card-header.abc.disabled a.card-link:after {
+   content: '\f0d7';
+   font-family: "Font Awesome 5 Free";
+   margin-left:10px;
+   color: #dee2e6;           
+}
+
+/*
+.card-header.abc a.completed {
+   color: #0094d7;
+}
+
+.card-header.abc a.disabled {
+   color: #d4d8de;
+   cursor: default;
+}
+
+.card-header.abc a.active,
+.card-header.abc a.completed {
+   color: #0094d7;
+}
+
+.card-header.abc a {
+   color: #0094d7;  
+}
+
+.card-header.abc a.disabled:after {
+   font-family: "Font Awesome 5 Free";
+   margin-left:10px;
+   content: '\f0d7';
+   color: #afafaf;           
+}
+.card-header.abc a.active:after {
+   font-family: "Font Awesome 5 Free";
+   margin-left:10px;
+   content: '\f0d8';
+}
+
+.card-header.abc a.active.collapsed:after {
+   font-family: "Font Awesome 5 Free";
+   margin-left:10px;
+   content: '\f0d7';       
+}
+
+.card-header.abc a.completed:after {
+   content: '\f0d7';
+   font-family: "Font Awesome 5 Free";
+   margin-left:10px;
+   color: #0094d7;           
+}
+*/
+
+div#accordion span {
+   font-weight: bold;
+   font-size: 0.9rem;
+   margin-top: 1em;
+   display: inline-block;
+}
+
+.accordion.abc {margin-bottom:1em}
+
+.card-body.abc {
+   padding-left: 0;   
+   font-weight: bold;
+}
+
+/*
+ *  ABC Yes-or-No toggle buttons - deprecated
+ */
+.btn-yes-no-abc {
+   background-color: #ffffff;
+   width: 100%;
+}
+
+.btn-yes-no-abc label, .btn-yes-no-abc .btn-secondary.disabled, .btn-yes-no-abc .btn-secondary:disabled {
+    background-color: #ffffff;
+    color: #aab2bd;
+    border: 1px solid #d4d8de;
+    opacity: 1;
+}
+
+.btn-yes-no-abc label:hover {
+    background-color: #f4fbfe;
+    color: #aab2bd;
+    border: 1px solid #d4d8de;
+}
+
+.btn-yes-no-abc label.btn-secondary.active, .btn-yes-no-abc label.btn-secondary:active {
+    background-color: #b5dc39 !important;
+    border-color: #b5dc39 !important ;
+}
+
+.btn-yes-no-abc label.btn-secondary:focus, .btn-yes-no-abc label.btn-secondary.focus {
+   box-shadow: none;
+}
+
+.btn-yes-no-abc span {
+   padding: 4px 8px;
+   display: inline-block;
+   font-weight: bold;
+}
+
+/*
+ * ABC radio buttons
+ */
+label.btn-radio-abc {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 1.2em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 0.2em;
+}
+
+/* Hide the browser's default radio button */
+label.btn-radio-abc input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+label.btn-radio-abc span.checkmark {
+    position: absolute;
+    top: -3px;
+    left: 1px;
+    height: 30px;
+    width: 30px;
+    border: 1px solid #0094d7;
+    background-color: #f9fafb;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+label.btn-radio-abc:hover input ~ span.checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+label.btn-radio-abc input:checked ~ span.checkmark {
+    background-color: #b5dc39;
+    border-color: #b5dc39;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+label.btn-radio-abc span.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+label.btn-radio-abc input:checked ~ span.checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+label.btn-radio-abc span.checkmark:after {
+    top: 0.375rem;
+    right: 0.375rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: #fff;
+    border-radius: 50%;
+}
+/* ABC primary button */
+
+.btn-primary.abc:hover, .btn-primary.abc:active:focus {
+   background-image: linear-gradient(to bottom, #8dd7f8, #00adef);
+   border-color: #00adef;
+}
+
+.btn-primary.abc {
+    /*text-align: center;*/
+    border: 1px solid #0073ba;
+    border-radius: 4px;
+    /*box-shadow: 1.7px 1.7px 4px rgba(0,0,0,0.25);*/
+    transition: border-color 0.2s;
+    font-family: inherit;
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin:0 1rem;
+    /*color: #ffffff;*/
+    padding: 0.5rem 1rem;
+    background-image: linear-gradient(to bottom, #00adef, #0073ba);
+    box-shadow: none !important;
+    /*width: 50%;*/
+}
+
+.btn-primary.abc.back {
+   border-color: #d4d8de;
+   color: #8c949e;
+   background-image: linear-gradient(to bottom, #f9fafb, #d4d8de);
+}
+
+.btn-primary.abc.back:active:focus, .btn-primary.abc.back:hover {
+   box-shadow: inherit;
+   background-image: linear-gradient(to bottom, #eef0f3, #d4d8de);
+   border-color: #f9fafb;
+   color: #8c949e;
+   border-color: #d4d8de;
+}
+
+.form-group.abc {
+   margin-top: 1rem;
+}
+
+.dateInput {
+    width: calc(100% - 2.9rem - 25px);
+    height: 38px;
+    display: inline-block;
+    text-align: left;
+    /*padding: 0.75rem;*/
+    background-color: #f9fafb;
+    color: #8c949e;
+    /*padding-top: 0.46rem;*/
+}
+
+/*phone screen*/
+@media (max-width:599px) {
+}
+
+/* middle screen */
+@media (min-width:600px) and (max-width:899px) {
+}
+
+/* tablet screen */
+@media (max-width:899px) {
+   input.form-control.abc {
+      display: inline-block;
+   }
+}
+
+/* large desktop screen */
+@media (min-width:768px) {
+   .btn-primary.abc {
+      width: 10rem;
+      margin: 0px auto;
+   }
+   
+   .form-control.abc {
+      margin-top: -0.5em;
+      display: inline;
+   }
+   
+   .form-group.abc {
+      text-align: center;
+   }   
+
+   .dateInput {
+      width: 8em;
+   }   
+}
+
+.list-group-item.abc-no-bottom-border {
+   border-bottom-width: 0px;
+}
+
+.invalid-feedback.abc-global {
+    background-color: #fff2d3;
+    color: #ff8c5c;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: 1rem;
+    text-align: center;   
+}
+
+.invalid-feedback.abc-global.blue {
+    color: #5181aa;
+}
+
+.invalid-feedback.abc-global.active {
+   display: block;
+}
+
+.abc-color-blue {
+   color: #0094d7;
+}
+
+/*
+ * ABC toggle buttons 
+ */            
+.btn-group-toggle.abc {
+   width: 100%;
+   color: #999999;
+}
+
+.btn-group-toggle.abc span {
+   padding: 5px 8px;
+   display: inline-block;
+   
+   font-weight: bold;
+}
+
+.btn-group-toggle.abc label {
+   background-color: white;
+   border: 1px solid #cccccc;
+}
+            
+.btn-group-toggle.abc label:hover {
+   background-color: #f4fbfe;
+}
+
+.btn-group-toggle.abc.disabled label:hover,
+.btn-group-toggle.abc.disabled label:active,
+.btn-group-toggle.abc.disabled label:focus,
+.btn-group-toggle.abc.disabled label.active,
+.btn-group-toggle.abc.disabled label.focus
+{
+   background-color: white !important;
+   border: 1px solid #cccccc !important;;
+   box-shadow: none;
+   color: #999999;
+}
+            
+.btn-group-toggle.abc label.active, 
+.btn-group-toggle.abc label.focus,
+.btn-group-toggle.abc label:focus,
+.btn-group-toggle.abc label:active {
+   background-color: #b5dc39 !important;
+   border-color: #b5dc39 !important;
+   box-shadow: none;
+   color:white;
+}
+
+.hide {
+    display:none;
+}
+
+.form-group.abc label, .form-group.abc input {
+   margin-left: 10px;
+}
+
+.row.abc {
+     margin-left:0;
+     margin-right:0;
+}
+
+.ui-dialog.abc .ui-dialog-content {
+   overflow: visible;
+   color: #8c949e;
+   font: normal 12pt 'Lato', Arial, sans-serif;
+}
+
+.ui-dialog.abc .ui-dialog-titlebar {
+   display: none;
+}
