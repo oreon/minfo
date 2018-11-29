@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -76,6 +77,9 @@ public class PersonController {
         DrugDetail detail = new DrugDetail(id);
         detail.setBrandName(name);
         detail.setGenericName(genericName);
+        detail.setDateListed(new Date());
+        detail.setAigCode("123");
+        detail.setDinPin("123456789");
         detail.setQuotePrice(new BigDecimal(23.25));
         detail.setManufacturer( SampleData.ALC );
         return detail;

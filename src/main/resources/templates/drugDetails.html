@@ -10,23 +10,66 @@
 
 <section layout:fragment="content">
 
-    <div >
-        <h5>Drug Details </h5>
-        <table class="table responsive">
+    <div>
+        <div style="background-color: #eee ; boder-bottom:2px solid red; padding: 15px; text: large"> <span th:text="${drug.brandName}"></span>  |  <span th:text="${drug.genericName}"></span>
+            |  <span th:text="${drug.dinPin}"></span>  </div>
+        <br/>
+        <table class="table">
 
             <tr>
-                <td th:text="${drug.productId}"></td>
+                <td >Date Listed/Coverage Update</td>
+                <td th:text="${#dates.format(drug.dateListed, 'dd-MMM-yyyy')}"></td>
             </tr>
             <tr>
-                <td th:text="${drug.genericName}"></td>
+                <td >Date Discontinued</td>
+                <td  th:text="${drug.dateDiscontinued != null} ? ${drug.dateDiscontinued} : 'N/A'"> </td>
             </tr>
             <tr>
+                <td >Unit Price</td>
                 <td th:text="${drug.quotePrice}"></td>
             </tr>
             <tr>
+                <td >LCA</td>
+                <td th:text="${drug.quotePrice}"></td>
+            </tr>
+            <tr>
+                <td >MAC Price</td>
+                <td th:text="${drug.quotePrice}"></td>
+            </tr>
+            <tr>
+                <td >Unit of Issue:</td>
+                <td th:text="${drug.quotePrice}"></td>
+            </tr>
+            <tr>
+                <td >Manufacturer:</td>
+                <td th:text="${drug.manufacturer.name}"> </td>
+            </tr>
+            <tr>
+                <td >ATC:</td>
+                <td th:text="${drug.manufacturer.name}"> </td>
+            </tr>
+            <tr>
+                <td >Provincial Drug Schedule</td>
+                <td th:text="${drug.manufacturer.name}"> </td>
+            </tr>
+            <tr>
+                <td >Interchangeable Products:</td>
                 <td th:text="${drug.manufacturer.name}"> </td>
             </tr>
         </table>
+        <hr/>
+        <table class="table">
+
+            <tr>
+                <td >Coverage Update</td>
+                <td th:text="${drug.productId}"></td>
+            </tr>
+            <tr>
+                <td >Applies to Clients of</td>
+                <td th:text="${drug.genericName}"></td>
+            </tr>
+        </table>
+
 
     </div>
 </section>
