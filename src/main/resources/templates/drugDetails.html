@@ -42,31 +42,31 @@
             </tr>
             <tr>
                 <td >Manufacturer:</td>
-                <td th:text="${drug.manufacturer.name}"> </td>
+                <td> <a th:text="${drug.manufacturer.name}" href="#"></a></td>
             </tr>
             <tr>
                 <td >ATC:</td>
-                <td th:text="${drug.manufacturer.name}"> </td>
+                <td th:text="${drug.aigCode}"> </td>
             </tr>
             <tr>
                 <td >Provincial Drug Schedule</td>
-                <td th:text="${drug.manufacturer.name}"> </td>
+                <td th:text="${drug.provScheduleCode}"> </td>
             </tr>
             <tr>
                 <td >Interchangeable Products:</td>
-                <td th:text="${drug.manufacturer.name}"> </td>
+                <td >  <a th:text="${drug.interchangeable}" href="#"></a></td>
             </tr>
         </table>
-        <hr/>
+        <hr style="color: darkorange; width: 2px"/>
         <table class="table">
 
             <tr>
-                <td >Coverage Update</td>
-                <td th:text="${drug.productId}"></td>
+                <td >Coverage Status</td>
+                <td th:text="${drug.coverageStatus}"></td>
             </tr>
             <tr>
                 <td >Applies to Clients of</td>
-                <td th:text="${drug.genericName}"></td>
+                <td th:text="${drug.clientsAppliedTo}"></td>
             </tr>
         </table>
 

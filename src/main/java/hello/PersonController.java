@@ -1,6 +1,7 @@
 package hello;
 
 import ca.bluecross.ab.idbl.model.DrugDetail;
+import ca.bluecross.ab.idbl.model.ReviewDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -78,10 +79,34 @@ public class PersonController {
         detail.setBrandName(name);
         detail.setGenericName(genericName);
         detail.setDateListed(new Date());
-        detail.setAigCode("123");
+        detail.setPharmaTheraClassificationId("456666");
+        detail.setRouteCode("Injectable");
+        detail.setCoverageStatus("UNDER REVIEW");
+        detail.setProvScheduleCode("U3");
+        detail.setInterchangeable("Yes");
+        detail.setAigCode("M01AE01");
+        //TODO detail.getunits()
+        detail.setClientsAppliedTo("Child and Family Services (Group 20403)\n" +
+                "Alberta Child Health Benefit (Group 20400, 20401, 20402)\n" +
+                "Children and Youth Services (Group 19824)\n" +
+                "Income Support (Group 19823)\n" +
+                "Learners Program (Group 22128)\n" +
+                "Alberta Human Services (AISH) (Group 19823)\n" +
+                "Alberta Adult Health Benefit (AAHB) (Group 23609)");
+       // detail.setAigCode("123");
         detail.setDinPin("123456789");
+        detail.setTrodsReviews(createReviews());
         detail.setQuotePrice(new BigDecimal(23.25));
         detail.setManufacturer( SampleData.ALC );
         return detail;
+    }
+
+    List<ReviewDetail> createReviews(){
+        List<ReviewDetail> reviews = new ArrayList<>();
+        ReviewDetail review = new ReviewDetail("First Review", "CDR");
+        ReviewDetail review2 = new ReviewDetail("Second Review", "CDR");
+        reviews.add(review);
+        reviews.add(review2);
+        return reviews;
     }
 }
