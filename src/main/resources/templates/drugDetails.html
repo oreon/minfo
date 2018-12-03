@@ -11,65 +11,89 @@
 <section layout:fragment="content">
 
     <div>
-        <div style="background-color: #eee ; boder-bottom:2px solid red; padding: 15px; text: large"> <span th:text="${drug.brandName}"></span>  |  <span th:text="${drug.genericName}"></span>
-            |  <span th:text="${drug.dinPin}"></span>  </div>
+        <div class="abc-search-header text-uppercase">
+            <span class="text-uppercase" th:text="${drug.brandName}"></span>  |
+            <span th:text="${drug.genericName}"></span> | DIN/PIN
+            <span th:text="${drug.dinPin}"></span>
+        </div>
         <br/>
-        <table class="table">
-
+        <table class="table abc-drug-detail-table">
             <tr>
-                <td >Date Listed/Coverage Update</td>
+                <td class="font-italic">Last Updated: Aug 30, 2018</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">1) 920000 Miscellaneous</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">2) 923600 Disease-Modifying</td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Date Listed/Coverage Update</td>
                 <td th:text="${#dates.format(drug.dateListed, 'dd-MMM-yyyy')}"></td>
             </tr>
             <tr>
-                <td >Date Discontinued</td>
+                <td class="font-weight-bold">Date Discontinued</td>
                 <td  th:text="${drug.dateDiscontinued != null} ? ${drug.dateDiscontinued} : 'N/A'"> </td>
             </tr>
             <tr>
-                <td >Unit Price</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Unit Price</td>
                 <td th:text="${drug.quotePrice}"></td>
             </tr>
             <tr>
-                <td >LCA</td>
+                <td class="font-weight-bold">LCA</td>
+                <td th:text="${drug.quotePrice}"></td>
+            </tr>
+            <tr >
+                <td class="font-weight-bold">MAC Price</td>
                 <td th:text="${drug.quotePrice}"></td>
             </tr>
             <tr>
-                <td >MAC Price</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Unit of Issue:</td>
                 <td th:text="${drug.quotePrice}"></td>
             </tr>
             <tr>
-                <td >Unit of Issue:</td>
-                <td th:text="${drug.quotePrice}"></td>
-            </tr>
-            <tr>
-                <td >Manufacturer:</td>
+                <td class="font-weight-bold">Manufacturer:</td>
                 <td> <a th:text="${drug.manufacturer.name}" href="#"></a></td>
             </tr>
             <tr>
-                <td >ATC:</td>
+                <td class="font-weight-bold">ATC:</td>
                 <td th:text="${drug.aigCode}"> </td>
             </tr>
             <tr>
-                <td >Provincial Drug Schedule</td>
+                <td class="font-weight-bold">Provincial Drug Schedule</td>
                 <td th:text="${drug.provScheduleCode}"> </td>
             </tr>
             <tr>
-                <td >Interchangeable Products:</td>
+                <td class="font-weight-bold">Interchangeable Products:</td>
                 <td >  <a th:text="${drug.interchangeable}" href="#"></a></td>
             </tr>
-        </table>
-        <hr style="color: darkorange; width: 2px"/>
-        <table class="table">
-
             <tr>
-                <td >Coverage Status</td>
+                <td></td>
+            </tr>
+        </table>
+        <hr class="abc-orange-hr"/>
+        <table class="abc-drug-detail-table table">
+            <tr>
+                <td class="font-weight-bold">Coverage Status</td>
                 <td th:text="${drug.coverageStatus}"></td>
             </tr>
             <tr>
-                <td >Applies to Clients of</td>
+                <td class="font-weight-bold">Applies to Clients of</td>
                 <td th:text="${drug.clientsAppliedTo}"></td>
             </tr>
         </table>
-
 
     </div>
 </section>
