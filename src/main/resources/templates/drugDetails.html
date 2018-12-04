@@ -11,12 +11,11 @@
 <section layout:fragment="content">
 
     <div>
-        <div class="abc-search-header text-uppercase">
+        <div class="abc-search-header border-warning text-uppercase">
             <span class="text-uppercase" th:text="${drug.brandName}"></span>  |
             <span th:text="${drug.genericName}"></span> | DIN/PIN
             <span th:text="${drug.dinPin}"></span>
         </div>
-        <br/>
         <table class="table abc-drug-detail-table">
             <tr>
                 <td class="font-italic">Last Updated: Aug 30, 2018</td>
@@ -25,10 +24,10 @@
                 <td></td>
             </tr>
             <tr>
-                <td class="font-weight-bold">1) 920000 Miscellaneous</td>
+                <td class="text-warning font-weight-bold">1) 920000 Miscellaneous Therapeutic Agents <i class="abc-font-small fa fa-play-circle"></i></td>
             </tr>
             <tr>
-                <td class="font-weight-bold">2) 923600 Disease-Modifying</td>
+                <td class="font-weight-bold">2) 923600 Disease-Modifying Antirheumatic Agents <i class="abc-font-small fa fa-play-circle"></i></td>
             </tr>
             <tr>
                 <td></td>
@@ -65,25 +64,25 @@
             </tr>
             <tr>
                 <td class="font-weight-bold">Manufacturer:</td>
-                <td> <a th:text="${drug.manufacturer.name}" href="#"></a></td>
+                <td> <a class="border-bottom border-warning text-warning font-weight-bold" th:text="${drug.manufacturer.name}" data-toggle="modal" data-target="#exampleModalCenter"></a></td>
             </tr>
             <tr>
                 <td class="font-weight-bold">ATC:</td>
                 <td th:text="${drug.aigCode}"> </td>
             </tr>
             <tr>
-                <td class="font-weight-bold">Provincial Drug Schedule</td>
+                <td class="font-weight-bold">Provincial Drug Schedule: <i class="fa fa-info-circle"></i></td>
                 <td th:text="${drug.provScheduleCode}"> </td>
             </tr>
             <tr>
                 <td class="font-weight-bold">Interchangeable Products:</td>
-                <td >  <a th:text="${drug.interchangeable}" href="#"></a></td>
+                <td >  <a class="border-bottom border-dark text-dark font-weight-bold" th:text="${drug.interchangeable}" href="#"></a></td>
             </tr>
             <tr>
                 <td></td>
             </tr>
         </table>
-        <hr class="abc-orange-hr"/>
+        <hr class="abc-hr bg-warning"/>
         <table class="abc-drug-detail-table table">
             <tr>
                 <td class="font-weight-bold">Coverage Status</td>
@@ -94,9 +93,53 @@
                 <td th:text="${drug.clientsAppliedTo}"></td>
             </tr>
         </table>
-
+        <p class="font-weight-bold abc-font-small">COVERAGE CRITERIA</p>
+        <select style="max-width: 50%;">
+            <option selected>Select a criteria</option>                        
+        </select>
+        <br>
+        <div>
+            <p class="my-3 font-weight-bold abc-font-small">REVIEW STATUS/PAST DECISIONS</p>
+            <div class="d-flex">
+                <div>
+                    <p>ECDET</p>
+                    <select style="min-width: 150%; font-size: smaller;">
+                        <option selected>Please select one</option>
+                    </select>
+                </div>
+                <span class="fill-half-space"></span>
+                <div>
+                    <p>CDR</p>
+                    <select style="min-width: 150%; font-size: smaller;">
+                        <option selected>Select a criteria</option>                        
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
+    <button class="mt-5 mb-3 px-5 btn btn-sm bg-light disabled">GLOSSARY</button>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="abc-search-header border-warning">
+              <span class="modal-title ml-3" id="exampleModalCenterTitle" th:text="${drug.manufacturer.name}"></span>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex ml-3">
+                    <span><strong>Address:</strong> <p th:text="${drug.manufacturer.address}"></p></span>
+                    <span class="fill-half-space"></span>
+                    <span><strong>Toll-free:</strong> <p th:text="${drug.manufacturer.phoneNumber}"></p></span>
+                </div>
+                <div class="ml-3">
+                    <span><strong>Telephone:</strong> <p th:text="${drug.manufacturer.phoneNumber}"></p></span>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
 </section>
-
 </body>
 </html>
