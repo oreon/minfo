@@ -243,3 +243,23 @@ div.auto-complete label {
    margin-left: -15px;
    font-size: 1rem;
 }
+
+.abc-search-header {
+ background-color: #eee;
+ border-bottom: 0.15rem solid darkorange;
+ padding: 1rem;
+ font-size: small;
+}
+
+.abc-drug-detail-table tr td {
+border: none;
+}
+
+.abc-drug-detail-table {
+table-layout: fixed
+}
+
+.abc-orange-hr {
+    background: darkorange;
+    height: 0.15rem;
+}
