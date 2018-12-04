@@ -1,0 +1,32 @@
+.abc-search-header {
+    background-color: #eee;
+    border-bottom: 0.2rem solid;
+    padding: 1rem;
+    font-size: small;
+   }
+   
+   .abc-drug-detail-table tr td {
+   border: none;
+   padding-top: 0.2rem;
+   }
+   
+   .abc-drug-detail-table {
+   table-layout: fixed
+   }
+   
+   .abc-hr {
+       height: 0.15rem;
+   }
+   
+   .abc-underline-text {
+       text-decoration: underline;
+   }
+   
+   .abc-font-small {
+       font-size: small;
+   }
+   
+   .fill-half-space {
+       flex: 0.5;
+   }
+   
