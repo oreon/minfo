@@ -85,6 +85,13 @@ public class PersonController {
         detail.setProvScheduleCode("U3");
         detail.setInterchangeable("Yes");
         detail.setAigCode("M01AE01");
+
+        if(name.equals("Humira")){
+            List<DrugDetail> drgs = new ArrayList<>();
+            drgs.add (createDrug("Zantac", "345", "Adamulab"));
+            drgs.add (createDrug("Baznac", "349", "Adamulab"));
+            detail.setInterchangeableProducts(drgs);
+        }
         //TODO detail.getunits()
         detail.setClientsAppliedTo("Child and Family Services (Group 20403)\n" +
                 "Alberta Child Health Benefit (Group 20400, 20401, 20402)\n" +
