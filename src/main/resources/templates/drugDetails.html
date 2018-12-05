@@ -23,8 +23,8 @@
             <tr>
                 <td></td>
             </tr>
-            <tr th:each="category : ${drug.listingCategory}">
-                <td class="text-warning font-weight-bold">1) <a th:text=" ${category.priceListId} +  ${category.productListingCategory }" > <i class="abc-font-small fa fa-play-circle"></i></a></td>
+            <tr th:each="category, iStat  : ${drug.listingCategory}">
+                <td class="text-warning font-weight-bold"><span th:text="${iStat.index + 1} + ') '"></span>&nbsp;<span th:text="${category.priceListId} + ' ' + ${category.productListingCategory}"></span> <i class="abc-font-small fa fa-play-circle"></i> </td>
             </tr>
 
             <tr>
@@ -74,7 +74,8 @@
             </tr>
             <tr>
                 <td class="font-weight-bold">Interchangeable Products:</td>
-                <td >  <a class="border-bottom border-dark text-dark font-weight-bold" th:text="${drug.interchangeable}" href="#"></a></td>
+                <td th:if="${drug.interchangeable}"><a class="border-bottom border-dark text-dark font-weight-bold" data-toggle="modal" data-target="#interchangeableModal">YES</a></td>
+                <td th:if="!${drug.interchangeable}"><span class="border-bottom border-dark text-dark font-weight-bold">NO</span></td>
             </tr>
             <tr>
                 <td></td>
@@ -91,31 +92,33 @@
                 <td th:text="${drug.clientsAppliedTo}"></td>
             </tr>
         </table>
-        <p class="font-weight-bold abc-font-small">COVERAGE CRITERIA</p>
-        <select style="max-width: 50%;">
-            <option selected>Select a criteria</option>                        
-        </select>
+        <div class="selectdiv selectdiv-criteria">
+            <label class="font-weight-bold abc-font-small">COVERAGE CRITERIA</label>
+            <select style="font-size: smaller;">
+                <option selected>Select a criteria</option>
+            </select>
+        </div>
         <br>
         <div>
             <p class="my-3 font-weight-bold abc-font-small">REVIEW STATUS/PAST DECISIONS</p>
             <div class="d-flex">
-                <div>
-                    <p>ECDET</p>
-                    <select style="min-width: 150%; font-size: smaller;">
+                <div class="selectdiv selectdiv-ecdt">
+                    <label>ECDET</label>
+                    <select style="font-size: smaller;">
                         <option selected>Please select one</option>
                     </select>
                 </div>
                 <span class="fill-half-space"></span>
-                <div>
-                    <p>CDR</p>
-                    <select style="min-width: 150%; font-size: smaller;">
+                <div class="selectdiv selectdiv-cdr">
+                    <label>CDR</label>
+                    <select style="font-size: smaller;">
                         <option selected>Select a criteria</option>                        
                     </select>
                 </div>
             </div>
         </div>
     </div>
-    <button class="mt-5 mb-3 px-5 btn btn-sm bg-light disabled">GLOSSARY</button>
+    <button class="mt-5 mb-3 px-5 btn btn-sm bg-eee disabled">GLOSSARY</button>
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -134,6 +137,42 @@
                 <div class="ml-3">
                     <span><strong>Telephone:</strong> <p th:text="${drug.manufacturer.phoneNumber}"></p></span>
                 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="interchangeableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="abc-search-header border-warning">
+              <span class="ml-3 modal-title text-uppercase font-weight-bold" id="interchangeableModalTitle" th:text="${drug.genericName}"></span>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <div class="ml-3 mb-3 d-flex abc-font-smaller">
+                LCA:&nbsp;<span class="mr-4" th:text="${drug.quotePrice}"></span>
+                MAC:&nbsp;<span th:text="${drug.quotePrice}"></span>
+              </div>
+              <span class="ml-3 font-italic abc-font-smaller">Interchangeable Products Found: <span th:text="${drug.interchangeableProducts.size()}"></span></span>
+              <table class="ml-3 mt-3 table abc-drug-detail-table m-0">
+                <tr>
+                  <th>DIN/PIN <i class="abc-font-small fa fa-angle-down"></i></th>
+                  <th>BRAND NAME <i class="abc-font-small fa fa-angle-down"></i></th> 
+                  <th>UNIT PRICE <i class="abc-font-small fa fa-angle-down"></i></th>
+                  <th>INFORMATION <i class="abc-font-small fa fa-angle-down"></i></th>
+                </tr>
+              </table>      
+            </div>
+            <div class="modal-body mr-3">
+                <table style="table-layout: fixed;" class="ml-3 table">
+                    <tr th:each="product, iStat : ${drug.interchangeableProducts}">
+                        <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.dinPin}"/>
+                        <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.brandName}"/>
+                        <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.quotePrice}"/>
+                        <td th:style="${iStat.first}? 'border-top: none;'"><button class="btn btn-sm btn-warning">More Information</button></td>
+                    </tr>
+                </table>
             </div>
           </div>
         </div>

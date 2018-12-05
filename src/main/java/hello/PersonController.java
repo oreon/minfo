@@ -76,7 +76,6 @@ public class PersonController {
     }
 
     private DrugDetail createDrug(String name, String id, String genericName) {
-
         List<ListingCategory> cats = new ArrayList<>();
 
         cats.add(new ListingCategory("111200")
@@ -94,19 +93,18 @@ public class PersonController {
         .setRouteCode("Injectable")
         .setCoverageStatus("UNDER REVIEW")
         .setProvScheduleCode("U3")
-        .setInterchangeable("Y")
+        .setInterchangeable("N")
         .setAigCode("M01AE01")
         .setListingCategory(cats);
 
-
-
+        List<DrugDetail> drgs = new ArrayList<>();
         if(name.equals("Humira")){
-            List<DrugDetail> drgs = new ArrayList<>();
             drgs.add (createDrug("Zantac", "345", "Adamulab"));
             drgs.add (createDrug("Baznac", "349", "Adamulab"));
-            detail.setInterchangeableProducts(drgs);
+            detail.setInterchangeable("Y");
         }
-         detail.setStrengthUnit("MilliLiter");
+        detail.setInterchangeableProducts(drgs);
+        detail.setStrengthUnit("MilliLiter");
         detail.setClientsAppliedTo("Child and Family Services (Group 20403)\n" +
                 "Alberta Child Health Benefit (Group 20400, 20401, 20402)\n" +
                 "Children and Youth Services (Group 19824)\n" +

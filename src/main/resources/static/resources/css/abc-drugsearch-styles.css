@@ -1,32 +1,128 @@
+* {
+  border-radius: 0 !important;
+}
+
 .abc-search-header {
+  background-color: #eee;
+  border-bottom: 0.2rem solid;
+  padding: 1rem;
+  font-size: small;
+}
+
+.abc-drug-detail-table th {
+  border: none;
+  padding-top: 0.2rem;
+  padding-bottom: 0;
+  font-size: 0.8rem;
+}
+
+.abc-drug-detail-table td {
+  border: none;
+  padding-top: 0.2rem;
+}
+
+.abc-drug-detail-table {
+  table-layout: fixed
+}
+
+.abc-hr {
+  height: 0.15rem;
+}
+
+.abc-underline-text {
+  text-decoration: underline;
+}
+
+.abc-font-small {
+  font-size: small;
+}
+
+.abc-font-smaller {
+  font-size: smaller;
+}
+
+.fill-half-space {
+  flex: 0.5;
+}
+
+.bg-eee {
     background-color: #eee;
-    border-bottom: 0.2rem solid;
-    padding: 1rem;
-    font-size: small;
-   }
-   
-   .abc-drug-detail-table tr td {
-   border: none;
-   padding-top: 0.2rem;
-   }
-   
-   .abc-drug-detail-table {
-   table-layout: fixed
-   }
-   
-   .abc-hr {
-       height: 0.15rem;
-   }
-   
-   .abc-underline-text {
-       text-decoration: underline;
-   }
-   
-   .abc-font-small {
-       font-size: small;
-   }
-   
-   .fill-half-space {
-       flex: 0.5;
-   }
-   
+}
+
+
+/*To remove button from IE11, thank you Matt */
+select::-ms-expand {
+  display: none;
+}
+
+.selectdiv-criteria:after {
+  content: '>';
+  font: 1rem "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  /*Adjust for position however you want*/
+
+  bottom: 210px;
+  left: 315px;  
+  padding: 0 0 2px;
+
+  position: absolute;
+  pointer-events: none;
+}
+
+.selectdiv-ecdt:after {
+  content: '>';
+  font: 1rem "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  /*Adjust for position however you want*/
+
+  bottom: 86px;
+  left: 315px;
+  padding: 0 0 2px;
+
+  position: absolute;
+  pointer-events: none;
+}
+
+.selectdiv-cdr:after {
+  content: '>';
+  font: 1rem "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  /*Adjust for position however you want*/
+
+  bottom: 86px;
+  left: 760px;
+  padding: 0 0 2px;
+
+  position: absolute;
+  pointer-events: none;
+}
+
+.selectdiv select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
+
+  display: block;
+  width: 320px;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 0.8 rem;
+  line-height: 1.75;
+  color: #333;
+  background-color: #eee;
+  -ms-word-break: normal;
+  word-break: normal;
+}
