@@ -14,8 +14,11 @@ import java.util.Map;
 public class DrugDetail {
    private String _productId;
    
-   private PharmaTheraClassification _ptc;   
-   private ListingCategory _cat;
+   private PharmaTheraClassification _ptc;
+
+
+
+   private List<ListingCategory> _cat;
    private Manufacturer _mfr;
    
    private String _genericName;
@@ -24,7 +27,9 @@ public class DrugDetail {
    private BigDecimal _aicStrength;
    private String _strengthUnit;
    private String _strengthUnitDesc;
-   
+
+
+
    private String _dinGpPin;
    
    private BigDecimal _quotePrice;
@@ -261,5 +266,41 @@ public class DrugDetail {
    
    public String getRouteCode() {
       return _routeCode;
-   }     
+   }
+
+   public List<ListingCategory> getListingCategory() {
+      return _cat;
+   }
+
+   public DrugDetail setListingCategory(List<ListingCategory> _cat) {
+      this._cat = _cat;
+      return this;
+   }
+
+   public BigDecimal getAicStrength() {
+      return _aicStrength;
+   }
+
+   public DrugDetail setAicStrength(BigDecimal _aicStrength) {
+      this._aicStrength = _aicStrength;
+      return this;
+   }
+
+   public String getStrengthUnit() {
+      return _strengthUnit;
+   }
+
+   public DrugDetail setStrengthUnit(String _strengthUnit) {
+      this._strengthUnit = _strengthUnit;
+      return this;
+   }
+
+   public String getStrengthUnitDesc() {
+      return _strengthUnitDesc;
+   }
+
+   public DrugDetail setStrengthUnitDesc(String _strengthUnitDesc) {
+      this._strengthUnitDesc = _strengthUnitDesc;
+      return this;
+   }
 }

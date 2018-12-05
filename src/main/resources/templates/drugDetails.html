@@ -23,12 +23,10 @@
             <tr>
                 <td></td>
             </tr>
-            <tr>
-                <td class="text-warning font-weight-bold">1) 920000 Miscellaneous Therapeutic Agents <i class="abc-font-small fa fa-play-circle"></i></td>
+            <tr th:each="category : ${drug.listingCategory}">
+                <td class="text-warning font-weight-bold">1) <a th:text=" ${category.priceListId} +  ${category.productListingCategory }" > <i class="abc-font-small fa fa-play-circle"></i></a></td>
             </tr>
-            <tr>
-                <td class="font-weight-bold">2) 923600 Disease-Modifying Antirheumatic Agents <i class="abc-font-small fa fa-play-circle"></i></td>
-            </tr>
+
             <tr>
                 <td></td>
             </tr>
@@ -49,18 +47,18 @@
             </tr>
             <tr>
                 <td class="font-weight-bold">LCA</td>
-                <td th:text="${drug.quotePrice}"></td>
+                <td th:text="${drug.lcaMacPrice}"></td>
             </tr>
             <tr >
                 <td class="font-weight-bold">MAC Price</td>
-                <td th:text="${drug.quotePrice}"></td>
+                <td th:text="${drug.lcaMacPrice}"></td>
             </tr>
             <tr>
                 <td></td>
             </tr>
             <tr>
                 <td class="font-weight-bold">Unit of Issue:</td>
-                <td th:text="${drug.quotePrice}"></td>
+                <td th:text="${drug.strengthUnit}"></td>
             </tr>
             <tr>
                 <td class="font-weight-bold">Manufacturer:</td>

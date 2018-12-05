@@ -1,6 +1,7 @@
 package hello;
 
 import ca.bluecross.ab.idbl.model.DrugDetail;
+import ca.bluecross.ab.idbl.model.ListingCategory;
 import ca.bluecross.ab.idbl.model.ReviewDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,16 +76,29 @@ public class PersonController {
     }
 
     private DrugDetail createDrug(String name, String id, String genericName) {
-        DrugDetail detail = new DrugDetail(id);
-        detail.setBrandName(name);
-        detail.setGenericName(genericName);
-        detail.setDateListed(new Date());
-        detail.setPharmaTheraClassificationId("456666");
-        detail.setRouteCode("Injectable");
-        detail.setCoverageStatus("UNDER REVIEW");
-        detail.setProvScheduleCode("U3");
-        detail.setInterchangeable("Yes");
-        detail.setAigCode("M01AE01");
+
+        List<ListingCategory> cats = new ArrayList<>();
+
+        cats.add(new ListingCategory("111200")
+                .setProductListingCategory("Miscallenous Modifying Agents"));
+
+        cats.add(new ListingCategory("112300")
+                .setProductListingCategory("Disease-Modifying Antirheumatic Agents"));
+
+
+        DrugDetail detail = new DrugDetail(id)
+        .setBrandName(name)
+        .setGenericName(genericName)
+        .setDateListed(new Date())
+        .setPharmaTheraClassificationId("456666")
+        .setRouteCode("Injectable")
+        .setCoverageStatus("UNDER REVIEW")
+        .setProvScheduleCode("U3")
+        .setInterchangeable("Y")
+        .setAigCode("M01AE01")
+        .setListingCategory(cats);
+
+
 
         if(name.equals("Humira")){
             List<DrugDetail> drgs = new ArrayList<>();
@@ -92,7 +106,7 @@ public class PersonController {
             drgs.add (createDrug("Baznac", "349", "Adamulab"));
             detail.setInterchangeableProducts(drgs);
         }
-        //TODO detail.getunits()
+         detail.setStrengthUnit("MilliLiter");
         detail.setClientsAppliedTo("Child and Family Services (Group 20403)\n" +
                 "Alberta Child Health Benefit (Group 20400, 20401, 20402)\n" +
                 "Children and Youth Services (Group 19824)\n" +
@@ -104,6 +118,7 @@ public class PersonController {
         detail.setDinPin("123456789");
         detail.setTrodsReviews(createReviews());
         detail.setQuotePrice(new BigDecimal(23.25));
+        detail.setLcaMacPrice(new BigDecimal(43.25));
         detail.setManufacturer( SampleData.ALC );
         return detail;
     }
