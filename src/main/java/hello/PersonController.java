@@ -123,8 +123,12 @@ public class PersonController {
 
     List<ReviewDetail> createReviews(){
         List<ReviewDetail> reviews = new ArrayList<>();
-        ReviewDetail review = new ReviewDetail("First Review", "CDR");
-        ReviewDetail review2 = new ReviewDetail("Second Review", "CDR");
+        ReviewDetail review = new ReviewDetail("First Review", "CDR")
+                .setCdrRecommendationId(111);
+
+        ReviewDetail review2 = new ReviewDetail("Second Review", "CDR").setCdrRecommendationId(222);
+
+
         reviews.add(review);
         reviews.add(review2);
         return reviews;
