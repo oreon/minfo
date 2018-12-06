@@ -9,7 +9,18 @@
 <body>
 
 <section layout:fragment="content">
-
+        <script type="text/javascript">
+            function showCdrDocs()
+            {
+                var selectedDocs = $("#selectCDR option:selected").val();
+                console.log(selectedDocs);
+                // if(selectedDocs.length) {
+                //     set value for the #cdrDocsId to selectedDocs
+                // } else {
+                //     remove #cdrDocsId from dom
+                // }
+            }
+          </script>
     <div>
         <div class="abc-search-header border-warning text-uppercase">
             <span class="text-uppercase" th:text="${drug.brandName}"></span>  |
@@ -111,8 +122,9 @@
                 <span class="fill-half-space"></span>
                 <div class="selectdiv selectdiv-cdr">
                     <label>CDR</label>
-                    <select style="font-size: smaller;">
-                        <option selected>Select a criteria</option>                        
+                    <select onchange="showCdrDocs()" id="selectCDR" style="font-size: smaller;">
+                        <option selected value="[]">Select a criteria</option>                        
+                        <option th:each="i : ${drug.cdrReviews}" th:value="${i.docs}" th:text="${i.title}"></option>
                     </select>
                 </div>
             </div>

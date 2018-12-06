@@ -115,7 +115,8 @@ public class PersonController {
                 "Alberta Adult Health Benefit (AAHB) (Group 23609)");
        // detail.setAigCode("123");
         detail.setDinPin("123456789");
-        detail.setTrodsReviews(createReviews());
+        //detail.setTrodsReviews(createReviews());
+        detail.setCdrReviews(createReviews());
         detail.setQuotePrice(new BigDecimal(23.25));
         detail.setLcaMacPrice(new BigDecimal(43.25));
         detail.setManufacturer( SampleData.ALC );
