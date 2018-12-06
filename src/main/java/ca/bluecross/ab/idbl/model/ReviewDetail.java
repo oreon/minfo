@@ -25,7 +25,8 @@ public class ReviewDetail {
    
    private List<ReviewDocument> _docs;
    
-   public ReviewDetail(final String title, final String type) {
+   public
+   ReviewDetail(final String title, final String type) {
       _title = title;
       _reviewType = type;
    }

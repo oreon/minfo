@@ -3,6 +3,7 @@ package hello;
 import ca.bluecross.ab.idbl.model.DrugDetail;
 import ca.bluecross.ab.idbl.model.ListingCategory;
 import ca.bluecross.ab.idbl.model.ReviewDetail;
+import ca.bluecross.ab.idbl.model.ReviewDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -123,10 +124,20 @@ public class PersonController {
 
     List<ReviewDetail> createReviews(){
         List<ReviewDetail> reviews = new ArrayList<>();
-        ReviewDetail review = new ReviewDetail("First Review", "CDR")
-                .setCdrRecommendationId(111);
+        List<ReviewDocument> docs = new ArrayList<>();
 
-        ReviewDetail review2 = new ReviewDetail("Second Review", "CDR").setCdrRecommendationId(222);
+        docs.add(new ReviewDocument(123).setContentType("pdf").setFileName("aReview.pdf"));
+        docs.add(new ReviewDocument(124).setContentType("pdf").setFileName("bReview.pdf"));
+
+
+        ReviewDetail review = new ReviewDetail("First Review", "CDR")
+                .setCdrRecommendationId(111)
+                .setReviewDocuments(docs);
+
+
+        ReviewDetail review2 = new ReviewDetail("Second Review", "CDR")
+                .setCdrRecommendationId(222)
+                .setReviewDocuments(docs);
 
 
         reviews.add(review);
