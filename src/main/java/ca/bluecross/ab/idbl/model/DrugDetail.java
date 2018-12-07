@@ -57,6 +57,8 @@ public class DrugDetail {
    
    private List<ReviewDetail> _cdrReviews;
    private List<ReviewDetail> _trodsReviews;
+
+   private ReviewDetail _selectedCdrReview;
    
    private Integer _interchangeableGroupNumber;
    
@@ -232,8 +234,17 @@ public class DrugDetail {
    
    public List<ReviewDetail> getTrodsReviews() {
       return _trodsReviews;
-   }   
-   
+   }
+
+   public DrugDetail setSelectedCdrReview(final ReviewDetail review) {
+      _selectedCdrReview = review;
+      return this;
+   }
+
+   public ReviewDetail getSelectedCdrReview() {
+      return _selectedCdrReview;
+   }
+
    /**
     * Sets both {@code CDR} and {@code TRODS} reviews.
     */

@@ -9,18 +9,18 @@
 <body>
 
 <section layout:fragment="content">
-        <script type="text/javascript">
-            function showCdrDocs()
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        function showCdrDocs()
             {
                 var selectedDocs = $("#selectCDR option:selected").val();
                 console.log(selectedDocs);
-                // if(selectedDocs.length) {
-                //     set value for the #cdrDocsId to selectedDocs
-                // } else {
-                //     remove #cdrDocsId from dom
-                // }
+                var message = /*[[${selectedDocs}]]*/ 'default';
+                console.log(message);
             }
-          </script>
+        /*]]>*/
+    </script>
+        
     <div>
         <div class="abc-search-header border-warning text-uppercase">
             <span class="text-uppercase" th:text="${drug.brandName}"></span>  |
@@ -122,11 +122,17 @@
                 <span class="fill-half-space"></span>
                 <div class="selectdiv selectdiv-cdr">
                     <label>CDR</label>
-                    <select onchange="showCdrDocs()" id="selectCDR" style="font-size: smaller;">
-                        <option selected value="[]">Select a criteria</option>                        
-                        <option th:each="i : ${drug.cdrReviews}" th:value="${i.docs}" th:text="${i.title}"></option>
+                    <select th:field="*{drug.selectedCdrReview}" style="font-size: smaller;">
+                        <option selected value="null">Select a criteria</option>                        
+                        <option th:each="i : ${drug.cdrReviews}" th:value="${i}" th:text="${i.title}"></option>
                     </select>
                 </div>
+                <span th:text="${drug.selectedCdrReview}"></span>
+                <ol th:if="${drug.selectedCdrReview}">
+                    <li th:each="doc : ${drug.selectedCdrReview.reviewDocuments}">
+                        <span th:text="${doc.fileName}"></span>
+                    </li>
+                </ol>
             </div>
         </div>
     </div>
@@ -157,7 +163,7 @@
       <div class="modal fade" id="interchangeableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="abc-search-header border-warning">
+            <div class="interchangeable-popup-header">
               <span class="ml-3 modal-title text-uppercase font-weight-bold" id="interchangeableModalTitle" th:text="${drug.genericName}"></span>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -167,27 +173,37 @@
                 MAC:&nbsp;<span th:text="${drug.quotePrice}"></span>
               </div>
               <span class="ml-3 font-italic abc-font-smaller">Interchangeable Products Found: <span th:text="${drug.interchangeableProducts.size()}"></span></span>
-              <table class="ml-3 mt-3 table abc-drug-detail-table m-0">
-                <tr>
-                  <th>DIN/PIN <i class="abc-font-small fa fa-angle-down"></i></th>
-                  <th>BRAND NAME <i class="abc-font-small fa fa-angle-down"></i></th> 
-                  <th>UNIT PRICE <i class="abc-font-small fa fa-angle-down"></i></th>
-                  <th>INFORMATION <i class="abc-font-small fa fa-angle-down"></i></th>
-                </tr>
-              </table>      
             </div>
-            <div class="modal-body mr-3">
-                <table style="table-layout: fixed;" class="ml-3 table">
-                    <tr th:each="product, iStat : ${drug.interchangeableProducts}">
-                        <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.dinPin}"/>
-                        <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.brandName}"/>
-                        <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.quotePrice}"/>
-                        <td th:style="${iStat.first}? 'border-top: none;'"><button class="btn btn-sm btn-warning">More Information</button></td>
-                    </tr>
+            <div class="modal-body p-0 mr-3">
+                <table id="interchangeablePopupTable" style="width: 102.82%;" class="sortable table">
+                    <thead class="m-0 interchangeable-table-header">
+                        <tr>
+                            <th class="border-top-0 border-warning">DIN/PIN </th>
+                            <th class="border-top-0 border-warning">BRAND NAME </i></th> 
+                            <th class="border-top-0 border-warning">UNIT PRICE </i></th>
+                            <th class="border-top-0 border-warning">INFORMATION </i></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="product, iStat : ${drug.interchangeableProducts}">
+                            <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.dinPin}"/>
+                            <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.brandName}"/>
+                            <td th:style="${iStat.first}? 'border-top: none;'" th:text="${product.quotePrice}"/>
+                            <td th:style="${iStat.first}? 'border-top: none;'"><button class="btn btn-sm btn-warning">More Information</button></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
           </div>
         </div>
+        <script type="javascript">
+            var newTableObject = document.getElementById("interchangeablePopupTable");
+            sorttable.makeSortable(newTableObject);
+            console.log(newTableObject);
+            console.log("Wtf is this");
+            console.log(sorttable);
+            console.log(sorttable.makeSortable);
+        </script>
       </div>
 </section>
 </body>

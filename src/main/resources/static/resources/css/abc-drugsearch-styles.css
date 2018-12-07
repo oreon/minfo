@@ -9,6 +9,18 @@
   font-size: small;
 }
 
+.interchangeable-popup-header {
+  background-color: #eee;
+  padding: 1rem;
+  font-size: small;
+}
+
+.interchangeable-table-header {
+  background-color: #eee;
+  padding: 1rem;
+  font-size: small;
+}
+
 .abc-drug-detail-table th {
   border: none;
   padding-top: 0.2rem;
